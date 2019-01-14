@@ -1,0 +1,22 @@
+version: "3"
+services:
+  kilter_db:
+    image: "postgres:9.6"
+    restart: always
+    environment:
+      POSTGRES_USER: kilter
+      POSTGRES_PASSWORD: kilter
+    container_name: kilter_db
+    ports:
+      - "5432:5432"
+    expose:
+      - 5432
+
+  db-test:
+    image: postgres:10.4
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: test
+    ports:
+      - 5439:5432
